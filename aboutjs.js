@@ -13,6 +13,7 @@
     let arw2 = document.getElementById("arw2");
     let pg1 = document.getElementById("pg1");
     let pg2 = document.getElementById("pg2");
+    let starlight=false;
     const staranimation = str.animate([
         {
             transform: "scale(0) rotate(360deg)"
@@ -150,6 +151,7 @@ location.href="index.html";
         });
         insAnimation.addEventListener('finish', function () {
             ins.style.textShadow = "0 0 3px red";
+            
         });
     });
     ins.addEventListener("mouseout", function (event) {
@@ -251,4 +253,91 @@ location.href="index.html";
         snpAnimation.addEventListener('finish', function () {
             snp.style.textShadow = "0 0 0px yellow";
         });
+    });
+    str.addEventListener("mouseover", function (event) {
+    
+        if (starlight == false) {
+            document.body.style.cursor = "pointer";
+            const stargrow = str.animate([
+                {
+                    color: "#000000"
+                },
+                {
+                    color: "#2A2923"
+                },
+                {
+                    color: "#464134"
+                },
+                {
+                    color: "#685D3E"
+                }
+            ], {
+                duration: 300,
+                easing: "linear"
+            });
+            stargrow.addEventListener('finish', function () {
+                str.style.color = "#685D3E";
+            });
+        }
+    
+    
+    });
+    
+    str.addEventListener("mouseout", function (event) {
+        document.body.style.cursor = "default";
+        if (starlight == false) {
+            const stargrow2 = str.animate([
+                {
+                    color: "#685D3E"
+                },
+                {
+                    color: "#464134"
+                },
+                {
+                    color: "#2A2923"
+                },
+                {
+                    color: "#000000"
+                }
+            ], {
+                duration: 300,
+                easing: "linear"
+            });
+    
+            stargrow2.addEventListener('finish', function () {
+                str.style.color = "#000000";
+            });
+    
+        }
+    
+    
+    
+    
+    });
+    str.addEventListener("click", function (event) {
+        if (starlight == false) {
+            const starcolor = str.animate([
+                {
+                    color: "#685D3E"
+                },
+                {
+                    color: "#88733C"
+                },
+                {
+                    color: "#BC9630"
+                },
+                {
+                    color: "#FFB900"
+                }
+            ], {
+                duration: 300,
+                easing: "linear"
+            });
+            starcolor.addEventListener('finish', function () {
+                str.style.color = "#FFB900";
+                starlight = true;
+            });
+    
+        }
+    
     });
